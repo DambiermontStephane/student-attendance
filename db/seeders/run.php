@@ -1,11 +1,11 @@
 <?php
 require_once '../connexion.php';
-function run()
-{
-    global $pdo;
 
+function run(): void
+{
     try {
-        $sql = <<<sql
+        global $pdo;
+        $stm = <<<sql
 INSERT INTO school_years (name, starts_at, ends_at, is_current_year)
 VALUES ('2025-2026', '2025-09-15', '2026-06-30', TRUE);
 
@@ -342,9 +342,10 @@ VALUES (1, (select id from `groups` where code like '%w201%')),
        (51, (select id from `groups` where code like '%w202%'));
 
 COMMIT;
+
 sql;
 
-        $pdo->exec($sql);
+        $pdo->exec($stm);
     } catch (PDOException $exception) {
         echo $exception->getMessage();
     }

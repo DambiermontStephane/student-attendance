@@ -1,5 +1,8 @@
 <footer class="page-footer">
-    <p>2025 - SGC</p>
+    <p>
+        <time datetime="2025">2025</time>
+        - <abbr title="Système de gestion de contenus">SGC</abbr>
+    </p>
 </footer>
 </body>
 </html>

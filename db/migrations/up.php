@@ -1,11 +1,11 @@
 <?php
 require_once '../connexion.php';
 
-function up()
+function up(): void
 {
     try {
         global $pdo;
-        $sql = <<<sql
+        $stm = <<<sql
 CREATE TABLE school_years
 (
     id              BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -132,16 +132,16 @@ CREATE TABLE students
 
 CREATE TABLE sessions
 (
-    id             BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    aa_id          BIGINT UNSIGNED NOT NULL,
-    title          VARCHAR(255),
-    teacher_id     BIGINT UNSIGNED NOT NULL,
-    starts_at      DATETIME        NOT NULL,
-    ends_at        DATETIME        NULL,
-    classroom_id   BIGINT UNSIGNED NOT NULL,
-    created_at     TIMESTAMP       NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at     TIMESTAMP       NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-    deleted_at     TIMESTAMP       NULL DEFAULT NULL,
+    id           BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    aa_id        BIGINT UNSIGNED NOT NULL,
+    title        VARCHAR(255),
+    teacher_id   BIGINT UNSIGNED NOT NULL,
+    starts_at    DATETIME        NOT NULL,
+    ends_at      DATETIME        NULL,
+    classroom_id BIGINT UNSIGNED NOT NULL,
+    created_at   TIMESTAMP       NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at   TIMESTAMP       NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at   TIMESTAMP       NULL DEFAULT NULL,
 
     UNIQUE (aa_id, classroom_id, starts_at),
 
@@ -216,10 +216,10 @@ CREATE TABLE attendances
 
 sql;
 
-        $pdo->exec($sql);
-    } catch (PDOException $e) {
-        echo "Erreur lors de la récupération des données : " . $e->getMessage();
+        $pdo->exec($stm);
+    } catch (PDOException $exception) {
+        echo $exception->getMessage();
     }
 }
 
-up();
+run();

@@ -1,17 +1,24 @@
 <?php
 
-include_once 'db/connexion.php';
-include_once 'db/queries.php';
+include 'db/queries.php';
+
+$title = '';
 
 switch ($_SERVER['REQUEST_URI']) {
     case '':
     case '/':
-        require './views/index.php';
+        $title = 'Page d’accueil';
+        include './views/home.php';
         break;
     case '/presences':
-        require './views/attendances/index.php';
+        $title = 'Prendre les présences';
+        include './views/attendances/index.php';
         break;
     case '/etudiants':
-        require './views/students/index.php';
+        $title = 'Tous les étudiants';
+        include './views/students/index.php';
         break;
+    default:
+        $title = '404';
+        include './views/404.php';
 }
