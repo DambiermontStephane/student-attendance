@@ -23,5 +23,4 @@
 
 <?php include 'views/partials/nav.php' ?>
 
-
 <?php include 'views/partials/footer.php' ?>
