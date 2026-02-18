@@ -23,6 +23,6 @@
 
 <?php include 'views/partials/nav.php' ?>
 
-<script defer src="views/assets/js/main.js"></script>
+<script defer src="../assets/js/main.js"></script>
 
 <?php include 'views/partials/footer.php' ?>
