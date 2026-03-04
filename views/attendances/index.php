@@ -1,15 +1,14 @@
-<?php include VIEWS_DIR.'/partials/head.php' ?>
-<?php global $title ?>
+<?php include VIEWS_PATH.'/partials/head.php' ?>
 <main class="page-main">
-    <h1><?php echo $title ?></h1>
+    <h1><?= $title ?></h1>
     <form action="" method="POST">
         <ol class="student-list">
-            <?php foreach (getAllStudents() as $student) { ?>
+            <?php foreach (all() as $student) { ?>
                 <li>
-                    <input id="<?php echo $student['id'] ?>" type="checkbox" name="students[]"
-                           value="<?php echo $student['id'] ?>">
-                    <label for="<?php echo $student['id'] ?>"><?php echo $student['first_name'] ?>
-                        &nbsp;<?php echo $student['last_name'] ?></label>
+                    <input id="<?= $student['id'] ?>" type="checkbox" name="students[]"
+                           value="<?= $student['id'] ?>">
+                    <label for="<?= $student['id'] ?>"><?= $student['first_name'] ?>
+                        &nbsp;<?= $student['last_name'] ?></label>
                 </li>
             <?php } ?>
         </ol>
@@ -21,8 +20,8 @@
 </main>
 
 
-<?php include VIEWS_DIR.'/partials/nav.php' ?>
+<?php include VIEWS_PATH.'/partials/nav.php' ?>
 
 <script defer src="/assets/js/main.js"></script>
 
-<?php include VIEWS_DIR.'/partials/footer.php' ?>
+<?php include VIEWS_PATH.'/partials/footer.php' ?>
