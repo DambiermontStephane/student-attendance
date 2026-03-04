@@ -1,9 +1,9 @@
-<?php include VIEWS_PATH.'/partials/head.php' ?>
+<?php include VIEWS_PATH . '/partials/head.php' ?>
 <main class="page-main">
     <h1><?= $title ?></h1>
     <form action="" method="POST">
         <ol class="student-list">
-            <?php foreach (all() as $student) { ?>
+            <?php foreach ($students as $student) { ?>
                 <li>
                     <input id="<?= $student['id'] ?>" type="checkbox" name="students[]"
                            value="<?= $student['id'] ?>">
@@ -20,8 +20,8 @@
 </main>
 
 
-<?php include VIEWS_PATH.'/partials/nav.php' ?>
+<?php include VIEWS_PATH . '/partials/nav.php' ?>
 
 <script defer src="/assets/js/main.js"></script>
 
-<?php include VIEWS_PATH.'/partials/footer.php' ?>
+<?php include VIEWS_PATH . '/partials/footer.php' ?>
