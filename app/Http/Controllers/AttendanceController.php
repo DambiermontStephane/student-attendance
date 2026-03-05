@@ -1,11 +1,15 @@
 <?php
 
-function index()
+namespace Attendances\Controllers;
+use Attendances\Models\Student;
+
+class AttendanceController
 {
-    require MODELS_PATH . '/Student.php';
-    $title = 'Prendre les présences';
-    $students = all();
+    static function index(): void
+    {
+        $title = 'Prendre les présences';
+        $students = Student::all();
 
-
-    view('attendances.index', compact('title', 'students'));
+        view('attendances.index', compact('title', 'students'));
+    }
 }

@@ -18,8 +18,8 @@ if (!function_exists('env')) {
     }
 }
 
-if (!function_exists('db_onnxeion')) {
-    function db_onnexion(): PDO|null
+if (!function_exists('db_connxeion')) {
+    function db_connexion(): PDO|null
     {
         $host = env('DB_HOST');
         $db_name = env('DB_DATABASE');
