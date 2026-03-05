@@ -1,34 +1,33 @@
 <?php
 
-const PUBLIC_PATH = __DIR__;
-const APP_PATH = PUBLIC_PATH.'/..';
-const VENDOR_PATH = PUBLIC_PATH.'/../vendor';
-const VIEWS_DIR = PUBLIC_PATH.'/../views';
+use Attendances\Controllers\AttendanceController;
+use Attendances\Controllers\HomeController;
+use Attendances\Controllers\StudentController;
 
-require VENDOR_PATH.'/autoload.php';
+require __DIR__ . '/../bootstrap/app.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(APP_PATH);
+require VENDOR_PATH . '/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(ROOT_PATH);
 $dotenv->load();
-
-include '../db/queries.php';
-
-$title = '';
 
 switch ($_SERVER['REQUEST_URI']) {
     case '':
     case '/':
-        $title = 'Page d’accueil';
-        include VIEWS_DIR.'/home.php';
+        HomeController::index();
+        /*
+         * Appel de la méthode index() via une instance
+         * Ne marche que si la méthode n'est pas déclarée statique
+         * $controller = new HomeController();
+         * $controller->index();
+        */
         break;
     case '/presences':
-        $title = 'Prendre les présences';
-        include VIEWS_DIR.'/attendances/index.php';
+        AttendanceController::index();
         break;
     case '/etudiants':
-        $title = 'Tous les étudiants';
-        include VIEWS_DIR.'/students/index.php';
+        StudentController::index();
         break;
     default:
         $title = '404';
-        include VIEWS_DIR.'/404.php';
+        include VIEWS_PATH . '/404.blade.php';
 }
